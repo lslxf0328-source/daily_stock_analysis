@@ -4,6 +4,10 @@ on:
   # 定时触发 - 每天北京时间 18:00 (UTC 10:00)
   schedule:
     - cron: '0 10 * * 1-5'     # 周一到周五，UTC 10:00 = 北京时间 18:00
+    - cron: '30 1 * * 1-5'     # 周一到周五，UTC 10:00 = 北京时间 9:30
+    - cron: '0 3 * * 1-5'     # 周一到周五，UTC 10:00 = 北京时间 11:00
+    - cron: '0 6 * * 1-5'     # 周一到周五，UTC 10:00 = 北京时间 14:00
+    - cron: '0 7 * * 1-5'     # 周一到周五，UTC 10:00 = 北京时间 15:00
   
   # 手动触发
   workflow_dispatch:
@@ -101,8 +105,8 @@ jobs:
           # Gemini AI（主选）
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
-          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || secrets.GEMINI_MODEL || 'gemini-3-flash-preview' }}
-          GEMINI_MODEL_FALLBACK: ${{ vars.GEMINI_MODEL_FALLBACK || secrets.GEMINI_MODEL_FALLBACK || 'gemini-2.5-flash' }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || secrets.GEMINI_MODEL || 'gemini-3.7-flash' }}
+          GEMINI_MODEL_FALLBACK: ${{ vars.GEMINI_MODEL_FALLBACK || secrets.GEMINI_MODEL_FALLBACK || 'gemini-3-flash-preview' }}
           GEMINI_REQUEST_DELAY: '3.0'
           
           # AIHubMix（优先于 OPENAI_API_KEY，自动适配 base_url，推荐国内用户）
